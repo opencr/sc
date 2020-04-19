@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: smp
+  profiles:
+    active: dev
+  devtools:
+    livereload:
+      enabled: true
+  http:
+    encoding:
+      charset: UTF-8
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  type-aliases-package: org.sc.smp.**.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    call-setters-on-nulls: true
+    cache-enabled: true
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+
+swagger:
+  base-package: org.smp
+  exclude-path: /aa/**
+
+logging:
+  level:
+    org.springframework: WARN
+    org.hibernate: WARN

@@ -1,0 +1,7 @@
+1.mybatis注解@Mapper(org.apache.ibatis.annotations.Mapper)，如果使用，
+可以不同在Application.java启动类中添加扫描注解@MapperScan("org.smp.**.mapper")
+2.如果你的UserMapper接口继承了maybatis接口（com.baomidou.mybatisplus.core.mapper.BaseMapper），
+里面的方法调用时可以像jpa方式一样使用，就是可以不用在UserMapper.xml中写对应的sql
+但是需要注意，如果xml中没有已经定义好的方法，必须要在UserEntity中写注解@TableName("user")和@TableField("id")
+3.如果表定义有字段如：last_login，则无论是jpa或者在xml中写的sql语句，都可以在bean中这样定义即可private String lastLogin;
+自动去掉下划线首字母大写（此处需要再yml配置mybatis）
