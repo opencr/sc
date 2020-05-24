@@ -1,3 +1,6 @@
 # Project exclude paths
 /eureka/target/
 /smp/target/
+/blog/target/
+/.idea/
+sc.iml
