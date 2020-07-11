@@ -12,6 +12,7 @@
         <module>eureka</module>
         <module>blog</module>
         <module>smp</module>
+        <module>portal</module>
     </modules>
 
     <parent>

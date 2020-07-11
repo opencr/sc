@@ -1,11 +1,11 @@
 server:
-  port: 8080
+  port: 8020
 
 spring:
   application:
     name: smp
   profiles:
-    active: dev
+    active: prod
   devtools:
     livereload:
       enabled: true
@@ -16,6 +16,28 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
+  rabbitmq:
+    host: 192.168.1.106
+    port: 5672
+    username: admin
+    password: admin
+    #开启消息确认模式
+    publisher-returns: true
+    publisher-confirms: true
+    template:
+      #开启mandatory: true, basic.return方法将消息返还给生产者
+      mandatory: true
+    listener:
+      #      direct:
+      #        acknowledge-mode: manual
+      simple:
+        #手动ACK
+        acknowledge-mode: manual
+        #        concurrency: 1
+        #        max-concurrency: 1
+        #        prefetch: 1
+        retry:
+          enabled: true
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/**/*Mapper.xml
@@ -32,7 +54,7 @@ mybatis-plus:
       logic-not-delete-value: 1
 
 swagger:
-  base-package: org.smp
+  base-package: org.sc
   exclude-path: /aa/**
 
 logging:

@@ -1,0 +1,42 @@
+server:
+  port: 8010
+
+spring:
+  application:
+    name: portal
+  devtools:
+    livereload:
+      enabled: true
+  http:
+    encoding:
+      charset: UTF-8
+  rabbitmq:
+    host: 192.168.1.106
+    port: 5672
+    username: admin
+    password: admin
+    #开启消息确认模式
+    publisher-returns: true
+    publisher-confirms: true
+    template:
+      #开启mandatory: true, basic.return方法将消息返还给生产者
+      mandatory: true
+    listener:
+#      direct:
+#        acknowledge-mode: manual
+      simple:
+        #手动ACK
+        acknowledge-mode: manual
+#        concurrency: 1
+#        max-concurrency: 1
+#        prefetch: 1
+        retry:
+          enabled: true
+
+swagger:
+  base-package: org.sc
+
+logging:
+  level:
+    org.springframework: WARN
+    org.hibernate: WARN
