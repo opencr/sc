@@ -3,4 +3,5 @@
 /smp/target/
 /blog/target/
 /.idea/
-sc.iml
+*.iml
+/portal/target/

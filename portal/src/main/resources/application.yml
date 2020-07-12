@@ -33,6 +33,11 @@ spring:
         retry:
           enabled: true
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.107:8761/eureka/
+
 swagger:
   base-package: org.sc
 

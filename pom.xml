@@ -66,34 +66,40 @@
         </dependencies>
     </dependencyManagement>
 
-    <repositories>
-        <!--使用阿里云库-->
-        <repository>
-            <id>nexus-aliyun</id>
-            <name>Nexus aliyun</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-        </repository>
-    </repositories>
+    <build>
+        <finalName>sc-1.0-SNAPSHOT</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
-    <profiles>
-        <!--开发默认环境-->
-        <profile>
-            <id>mysql</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <profileActive>mysql</profileActive>
-            </properties>
-        </profile>
-        <!--测试环境-->
-        <profile>
-            <id>h2</id>
-            <properties>
-                <profileActive>h2</profileActive>
-            </properties>
-        </profile>
-    </profiles>
+    <!--<build>
+        <plugins>
+            &lt;!&ndash;发布代码Jar插件 &ndash;&gt;
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.7</version>
+            </plugin>
+            &lt;!&ndash;发布源码插件 &ndash;&gt;
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>-->
 
     <!--<build>
         <defaultGoal>compile</defaultGoal>
