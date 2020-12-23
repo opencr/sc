@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: task
+  rabbitmq:
+    host: 47.115.94.67
+    port: 5672
+    username: ogtscms
+    password: Hyt123
+    publisher-confirms: true #如果对异步消息需要回调必须设置为true
+    publisher-returns: true
+    template:
+      mandatory: true
+    listener:
+      simple:
+        acknowledge-mode: manual
+        #每个消费者每次监听时可拉取处理的消息数量
+        prefetch: 1
+        retry:
+          enabled: true
+server:
+  port: 9627
+
+peer1:
+  ip:  127.0.0.1
+  port: 8761
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${peer1.ip}:${peer1.port}/eureka/
+
+swagger:
+  base-package: org.test.task
+
+
+mq:
+  direct: aa.9627.direct
+  route: aa.9627.route
+  queue: aa.9627.queue
